@@ -5,10 +5,16 @@ import { theme } from './config/vuetify.options'
 import languages from './static/lang/languages'
 import brand from './static/text/brand'
 
+const axios = require('axios')
+
 module.exports = {
   /*
   ** Headers of the page
   */
+  env: {
+    WUXT_PORT_BACKEND: process.env.WUXT_PORT_BACKEND || '3080'
+  },
+
   head: {
     htmlAttrs: {
       dir: 'ltr'
@@ -21,7 +27,7 @@ module.exports = {
       { name: 'msapplication-TileColor', content: '#FFFFFF' },
       { name: 'msapplication-TileImage', content: '/favicons/ms-icon-144x144.png' },
       // PWA primary color
-      { name: 'theme-color', content: theme.primary},
+      { name: 'theme-color', content: theme.primary },
       // Facebook
       { property: 'author', content: 'luxi' },
       { property: 'og:site_name', content: 'luxi.ux-maestro.com' },
@@ -88,6 +94,7 @@ module.exports = {
   plugins: [
     '~/plugins/vue-fragment-config',
     '~/plugins/vue-wow-config',
+    { src: '~/plugins/wp-api-docker-connector', ssr: false },
     { src: '~plugins/i18n-config.js' },
     { src: '~/plugins/caroussel-config', ssr: false },
     { src: '~/plugins/countup-config', ssr: false },
@@ -103,6 +110,14 @@ module.exports = {
   ** Nuxt.js modules
   */
   modules: [
+    '@nuxtjs/axios',
+    '@nuxtjs/pwa',
+    [
+      '~/modules/wp-api/index',
+      {
+        endpoint: 'http://' + (process.env.WUXT_WP_CONTAINER ? process.env.WUXT_WP_CONTAINER : 'wp.wuxt') + ':80/wp-json/'
+      }
+    ],
     ['@nuxtjs/html-minifier', { log: 'once', logHtml: true }],
     [
       'nuxt-mq',
@@ -184,7 +199,7 @@ module.exports = {
       vus: { cacheBusting: true },
       scss: { sourceMap: false }
     },
-    extend (config, ctx) {
+    extend(config, ctx) {
       config.plugins.push(
         new FilterWarningsPlugin({
           exclude: /Critical dependency: the request of a dependency is an expression/
@@ -207,7 +222,7 @@ module.exports = {
   layoutTransition: {
     name: 'layout',
     mode: 'out-in',
-    beforeEnter (el) {
+    beforeEnter(el) {
       console.log('Before enter...');
     },
     afterLeave(el) {
@@ -218,6 +233,13 @@ module.exports = {
   ** Application Port
   */
   server: {
-    port: 8000, // default: 3000
+    port: 3000, // default: 3000
+  },
+  generate: {
+    routes: function () {
+      return axios
+        .get('http://' + (process.env.WUXT_WP_CONTAINER ? process.env.WUXT_WP_CONTAINER : 'wp.wuxt') + ':80/wp-json/wuxt/v1/generate')
+        .then(({ data }) => data)
+    }
   }
 }
