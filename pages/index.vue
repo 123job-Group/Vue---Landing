@@ -81,11 +81,10 @@
 <script>
 import Header from '~/components/Header'
 import Hidden from '~/components/Hidden'
-import AnimateSlider from '~/components/AnimateSlider'
+// import AnimateSlider from '~/components/AnimateSlider'
 import Feature from '~/components/Feature'
 import Counter from '~/components/Counter'
 import Testimonials from '~/components/Testimonials'
-import Pricing from '~/components/Pricing'
 import Blog from '~/components/Blog'
 import Subscribe from '~/components/Subscribe'
 import Footer from '~/components/Footer'
@@ -96,12 +95,11 @@ import brand from '~/static/text/brand'
 export default {
   components: {
     'main-header': Header,
-    'animate-slider': AnimateSlider,
+    // 'animate-slider': AnimateSlider,
     Hidden,
     Feature,
     Counter,
     Testimonials,
-    Pricing,
     Blog,
     Subscribe,
     PageNav,

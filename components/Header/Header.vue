@@ -58,13 +58,6 @@
             </div>
           </nav>
           <nav class="user-menu">
-            <v-btn
-              v-if="isDesktop"
-              text
-            >
-              Login
-            </v-btn>
-            <v-btn color="primary">Register</v-btn>
             <v-spacer
               v-if="isDesktop"
               class="vertical-divider"

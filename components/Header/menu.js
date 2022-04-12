@@ -1,3 +1,3 @@
-const menu = ['feature', 'testimonials', 'pricing', 'blog', 'subscribe']
+const menu = ['feature', 'testimonials', 'nft', 'blog']
 
 export default menu

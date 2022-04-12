@@ -45,12 +45,12 @@
             color="primary"
             v-on="on"
           >
-            <v-icon dark>mdi-chevron-up</v-icon>
+            <v-icon dark>mdi-chevron-down</v-icon>
           </v-btn>
         </scrollactive>
       </template>
       <span class="tooltip">To Top</span>
-    </v-tooltip>  
+    </v-tooltip>
   </div>
 </template>
 

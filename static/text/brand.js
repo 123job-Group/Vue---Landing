@@ -1,15 +1,14 @@
 const brand = {
   starter: {
-    name: 'Veluxi Starter',
-    desc: 'Vue Starter Template',
+    name: 'callylabs.com',
+    desc: 'callylabs business page built with nuxt',
     prefix: 'veluxi',
-    footerText: 'Veluxi Theme All Rights Reserved 2021',
-    logoText: 'Veluxi Theme',
+    footerText: 'callylabs.com All Rights Reserved 2022',
+    logoText: 'Callylabs',
     projectName: 'Starter Project',
-    url: 'veluxi.ux-maestro.com',
+    url: 'callylabs.com',
     img: '/static/images/starter-logo.png',
-    notifMsg:
-      'Donec sit amet nulla sed arcu pulvinar ultricies commodo id ligula.'
+    notifMsg: 'Eat Sleep Build Repeat'
   }
 }
 
