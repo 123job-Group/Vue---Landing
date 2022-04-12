@@ -1,11 +1,12 @@
 <template>
-  <Page v-if="single.type === 'page'" :page="single"/>
-  <Post v-else :post="single"/>
+  <!-- <Page v-if="single.type === 'page'" :page="single"/>
+  <Post v-else :post="single"/> -->
+  <div></div>
 </template>
 
 <script>
-import Page from '~/components/WuxtTemplates/Page'
-import Post from '~/components/WuxTtemplates/Post'
+// import Page from '~/components/WuxtTemplates/Page'
+// import Post from '~/components/WuxTtemplates/Post'
 export default {
   async asyncData(context) {
     const { route, app, error } = context
